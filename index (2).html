@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sai Praneeth Achanta — Data Scientist & ML Engineer. Portfolio of work in machine learning, NLP, and MLOps.">
+<title>Sai Praneeth Achanta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0d;
+    --ink2: #3a3835;
+    --ink3: #6b6860;
+    --bg: #f5f2ec;
+    --bg2: #edeae2;
+    --bg3: #e4e0d6;
+    --accent: #1a3a2a;
+    --accent2: #2d6a4f;
+    --gold: #b5830a;
+    --gold-light: #f9edc7;
+    --border: rgba(15,14,13,0.10);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Outfit', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 3.5rem;
+    background: rgba(245,242,236,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: 0.04em; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 13px; color: var(--ink3); letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-left {
+    padding: 5rem 3.5rem 5rem 4.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    border-right: 1px solid var(--border);
+  }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em;
+    color: var(--accent2); text-transform: uppercase; margin-bottom: 1.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--accent2); }
+  .hero-name {
+    font-family: var(--serif); font-size: clamp(2.75rem, 4.5vw, 4rem);
+    line-height: 1.05; color: var(--ink); margin-bottom: 0.4rem;
+  }
+  .hero-name em { font-style: italic; color: var(--accent2); }
+  .hero-role {
+    font-family: var(--mono); font-size: 13px; color: var(--gold);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2.25rem;
+  }
+  .hero-bio {
+    font-size: 15px; color: var(--ink2); max-width: 480px;
+    line-height: 1.8; margin-bottom: 2.5rem;
+  }
+  .hero-bio strong { color: var(--ink); font-weight: 500; }
+  .contact-stack { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2.5rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-family: var(--mono); font-size: 12px; color: var(--ink3);
+    transition: color 0.2s;
+  }
+  .contact-item:hover { color: var(--accent2); }
+  .contact-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent2); flex-shrink: 0; }
+  .hero-cta { display: flex; gap: 0.75rem; }
+  .btn {
+    padding: 0.7rem 1.6rem; font-family: var(--mono); font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+    text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; border: none;
+  }
+  .btn-primary { background: var(--accent); color: #f5f2ec; }
+  .btn-primary:hover { background: var(--accent2); }
+  .btn-outline { background: transparent; color: var(--ink2); border: 1px solid var(--border); }
+  .btn-outline:hover { background: var(--bg2); border-color: var(--ink3); }
+
+  .hero-right {
+    padding: 5rem 3.5rem;
+    display: flex; flex-direction: column; justify-content: center; gap: 2.5rem;
+  }
+  .stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--border); border: 1px solid var(--border);
+  }
+  .stat-cell { background: var(--bg); padding: 1.75rem; }
+  .stat-num { font-family: var(--serif); font-size: 3rem; color: var(--ink); line-height: 1; margin-bottom: 0.3rem; }
+  .stat-label { font-size: 12px; font-family: var(--mono); color: var(--ink3); letter-spacing: 0.04em; }
+
+  /* ── SECTIONS ── */
+  section { padding: 5.5rem 4.5rem; border-top: 1px solid var(--border); }
+  .section-header { display: flex; align-items: baseline; gap: 1.25rem; margin-bottom: 3.5rem; }
+  .section-num { font-family: var(--mono); font-size: 11px; color: var(--ink3); letter-spacing: 0.1em; }
+  .section-title { font-family: var(--serif); font-size: 2.25rem; color: var(--ink); }
+
+  /* ── PILLARS ── */
+  .pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .pillar { background: var(--bg); padding: 2.25rem 2rem; position: relative; overflow: hidden; transition: background 0.2s; }
+  .pillar:hover { background: var(--bg2); }
+  .pillar-num { font-family: var(--mono); font-size: 11px; color: var(--ink3); letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .pillar-title { font-family: var(--serif); font-size: 1.5rem; color: var(--ink); margin-bottom: 1rem; }
+  .pillar-text { font-size: 13.5px; color: var(--ink2); line-height: 1.75; }
+  .pillar-bar {
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--accent2); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .pillar:hover .pillar-bar { transform: scaleX(1); }
+
+  /* ── PROJECTS ── */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .project-card {
+    background: var(--bg); padding: 2.25rem 2rem;
+    display: flex; flex-direction: column; gap: 0.9rem;
+    position: relative; overflow: hidden; transition: background 0.2s;
+  }
+  .project-card:hover { background: var(--bg2); }
+  .project-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .project-card:hover::after { transform: scaleX(1); }
+  .project-tag {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+    background: var(--gold-light); padding: 0.25rem 0.65rem;
+    border: 1px solid rgba(181,131,10,0.2); display: inline-block; width: fit-content;
+  }
+  .project-name { font-family: var(--serif); font-size: 1.3rem; line-height: 1.2; color: var(--ink); }
+  .project-desc { font-size: 13.5px; color: var(--ink2); line-height: 1.7; flex: 1; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .stack-tag {
+    font-family: var(--mono); font-size: 10px; padding: 0.2rem 0.5rem;
+    background: var(--bg3); border: 1px solid var(--border); color: var(--ink3);
+  }
+  .project-link {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
+    color: var(--accent2); display: flex; align-items: center; gap: 0.4rem;
+    text-transform: uppercase; transition: gap 0.2s; margin-top: 0.25rem;
+  }
+  .project-card:hover .project-link { gap: 0.75rem; }
+  .project-link::after { content: '→'; }
+
+  /* ── EXPERIENCE ── */
+  .exp-list { display: flex; flex-direction: column; }
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr; gap: 3rem;
+    padding: 3rem 0; border-top: 1px solid var(--border);
+  }
+  .exp-period { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.6rem; }
+  .exp-co { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 0.2rem; }
+  .exp-loc { font-family: var(--mono); font-size: 11px; color: var(--ink3); }
+  .exp-role { font-family: var(--serif); font-size: 1.5rem; color: var(--ink); margin-bottom: 0.5rem; }
+  .exp-domain { font-family: var(--mono); font-size: 11px; color: var(--accent2); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1.25rem; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .exp-bullets li { font-size: 14px; color: var(--ink2); padding-left: 1.25rem; position: relative; line-height: 1.65; }
+  .exp-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent2); font-size: 12px; top: 3px; }
+
+  /* ── SKILLS ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .skill-cat { background: var(--bg); padding: 1.75rem; }
+  .skill-cat-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent2); margin-bottom: 1rem;
+    padding-bottom: 0.75rem; border-bottom: 1px solid var(--border);
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-tag {
+    font-family: var(--mono); font-size: 11px; padding: 0.25rem 0.6rem;
+    background: var(--bg2); color: var(--ink2); border: 1px solid var(--border); transition: all 0.15s;
+  }
+  .skill-tag:hover { background: var(--bg3); color: var(--ink); }
+
+  /* ── EDUCATION ── */
+  .edu-block {
+    display: grid; grid-template-columns: 200px 1fr; gap: 3rem;
+    padding: 3rem 0; border-top: 1px solid var(--border); margin-top: 1px;
+  }
+  .edu-degree { font-family: var(--serif); font-size: 1.5rem; line-height: 1.2; color: var(--ink); margin-bottom: 0.5rem; }
+  .edu-school { font-family: var(--mono); font-size: 12px; color: var(--accent2); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2.5rem 4.5rem; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-left { font-family: var(--mono); font-size: 11px; color: var(--ink3); }
+  .footer-right { font-family: var(--serif); font-size: 1rem; color: var(--ink3); font-style: italic; }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 860px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { border-right: none; border-bottom: 1px solid var(--border); padding: 4rem 2rem; }
+    .hero-right { padding: 3rem 2rem; }
+    section { padding: 4rem 2rem; }
+    .pillars, .skills-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .exp-item, .edu-block { grid-template-columns: 1fr; gap: 0.75rem; }
+    footer { padding: 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">spa.dev</span>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Data Scientist &amp; ML Engineer</p>
+    <h1 class="hero-name">Sai Praneeth<br><em>Achanta</em></h1>
+    <p class="hero-role">4+ Years · End-to-End ML Solutions</p>
+    <p class="hero-bio">
+      I build <strong>production-grade machine learning systems</strong> — from raw data to deployed APIs. Specializing in NLP, deep learning, and MLOps across finance and healthcare. Currently at McKesson Corporation in Texas.
+    </p>
+    <div class="contact-stack">
+      <a href="mailto:achantasaipraneeth@gmail.com" class="contact-item"><span class="contact-dot"></span>achantasaipraneeth@gmail.com</a>
+      <span class="contact-item"><span class="contact-dot"></span>(551) 368-6527</span>
+      <span class="contact-item"><span class="contact-dot"></span>Texas, USA</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Years experience</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">50M+</div>
+        <div class="stat-label">Records processed</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">ML experiments tracked</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">45%</div>
+        <div class="stat-label">Avg. efficiency gains</div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="mailto:achantasaipraneeth@gmail.com" class="btn btn-primary">Get in touch →</a>
+      <a href="https://github.com/shallowcopper" target="_blank" class="btn btn-outline">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/sai-praneeth-achanta/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT I DO -->
+<section id="work">
+  <div class="section-header reveal">
+    <span class="section-num">01 /</span>
+    <h2 class="section-title">What I Do</h2>
+  </div>
+  <div class="pillars">
+    <div class="pillar reveal">
+      <div class="pillar-bar"></div>
+      <p class="pillar-num">// modeling</p>
+      <h3 class="pillar-title">Build & Evaluate</h3>
+      <p class="pillar-text">Regression, classification, ensemble methods, deep learning, NLP, and LLM integration — with rigorous A/B testing and statistical validation from first hypothesis to production confidence.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-bar"></div>
+      <p class="pillar-num">// engineering</p>
+      <h3 class="pillar-title">Deploy & Scale</h3>
+      <p class="pillar-text">Containerizing models with Docker, serving real-time predictions via FastAPI, tracking experiments in MLflow, and running CI/CD pipelines that keep ML systems reliable across environments.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-bar"></div>
+      <p class="pillar-num">// analytics</p>
+      <h3 class="pillar-title">Analyze & Communicate</h3>
+      <p class="pillar-text">Transforming massive datasets into actionable business insight using SQL, Python, Tableau, and Power BI — then presenting findings clearly to both technical teams and executive stakeholders.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <span class="section-num">02 /</span>
+    <h2 class="section-title">Projects</h2>
+  </div>
+  <div class="projects-grid">
+
+    <a href="https://github.com/shallowcopper/RAG-Based-Clinical-Decision-Support-System" target="_blank" class="project-card reveal">
+      <span class="project-tag">NLP · LLM · Healthcare</span>
+      <h3 class="project-name">RAG-Based Clinical Decision Support System</h3>
+      <p class="project-desc">A retrieval-augmented generation system that extracts and reasons over unstructured clinical data — EHR records and physician notes — to surface relevant medical information for decision-making. Combines LLM reasoning with domain-specific vector retrieval.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">LangChain</span><span class="stack-tag">RAG</span><span class="stack-tag">OpenAI API</span><span class="stack-tag">Jupyter</span>
+      </div>
+      <span class="project-link">View on GitHub</span>
+    </a>
+
+    <a href="https://github.com/shallowcopper/Attrition-prediction" target="_blank" class="project-card reveal">
+      <span class="project-tag">ML · Classification · HR Analytics</span>
+      <h3 class="project-name">Employee Attrition Prediction</h3>
+      <p class="project-desc">Uses classification models and feature engineering to predict which employees are at risk of leaving. Provides HR teams with data-driven signals to proactively improve retention — turning people data into a strategic advantage.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">Scikit-learn</span><span class="stack-tag">XGBoost</span><span class="stack-tag">Pandas</span><span class="stack-tag">Jupyter</span>
+      </div>
+      <span class="project-link">View on GitHub</span>
+    </a>
+
+    <a href="https://github.com/shallowcopper/Mushroom-classifier-app" target="_blank" class="project-card reveal">
+      <span class="project-tag">Computer Vision · Web App · Deployment</span>
+      <h3 class="project-name">Mushroom Classifier App</h3>
+      <p class="project-desc">An end-to-end deployed web application that classifies mushroom images in real time using a trained ML model. A showcase of the full ML product lifecycle — from notebook experimentation to a working, interactive application users can actually run.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">Flask</span><span class="stack-tag">Scikit-learn</span><span class="stack-tag">OpenCV</span><span class="stack-tag">HTML/CSS</span>
+      </div>
+      <span class="project-link">View on GitHub</span>
+    </a>
+
+    <a href="https://github.com/shallowcopper/Denoising" target="_blank" class="project-card reveal">
+      <span class="project-tag">Deep Learning · Medical Imaging · CV</span>
+      <h3 class="project-name">Medical Image Denoising & Enhancement</h3>
+      <p class="project-desc">Denoises and enhances different types of medical images using deep learning. Improves diagnostic-quality imagery for downstream ML and clinical tasks — demonstrating neural network applications in real healthcare imaging pipelines.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">TensorFlow</span><span class="stack-tag">OpenCV</span><span class="stack-tag">NumPy</span><span class="stack-tag">Jupyter</span>
+      </div>
+      <span class="project-link">View on GitHub</span>
+    </a>
+
+    <a href="https://github.com/shallowcopper/Mushroom-Classification" target="_blank" class="project-card reveal">
+      <span class="project-tag">ML · EDA · Classification</span>
+      <h3 class="project-name">Mushroom Classification</h3>
+      <p class="project-desc">Classifies mushroom species as edible or poisonous using tabular ML models. Covers exploratory data analysis, feature selection, hyperparameter tuning, and model comparison — a clean, end-to-end ML workflow with clear documentation.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">Scikit-learn</span><span class="stack-tag">Pandas</span><span class="stack-tag">Matplotlib</span><span class="stack-tag">Seaborn</span>
+      </div>
+      <span class="project-link">View on GitHub</span>
+    </a>
+
+    <a href="https://github.com/shallowcopper/Movie-Recommendation-System" target="_blank" class="project-card reveal">
+      <span class="project-tag">RecSys · Collaborative Filtering</span>
+      <h3 class="project-name">Movie Recommendation System</h3>
+      <p class="project-desc">A recommendation engine built on collaborative and content-based filtering. Delivers personalized movie suggestions by learning from user preference patterns — a classic but essential ML problem solved end-to-end.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">Scikit-learn</span><span class="stack-tag">Pandas</span><span class="stack-tag">NumPy</span><span class="stack-tag">Jupyter</span>
+      </div>
+      <span class="project-link">View on GitHub</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-num">03 /</span>
+    <h2 class="section-title">Experience</h2>
+  </div>
+  <div class="exp-list">
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <p class="exp-period">Aug 2024 – Present</p>
+        <p class="exp-co">McKesson Corporation</p>
+        <p class="exp-loc">Texas, USA</p>
+      </div>
+      <div>
+        <h3 class="exp-role">Data Scientist</h3>
+        <p class="exp-domain">// financial risk &amp; forecasting</p>
+        <ul class="exp-bullets">
+          <li>Engineered Python-based ML pipelines for financial risk and forecasting — 35% faster data processing, 25% better training efficiency.</li>
+          <li>Processed 50M+ record datasets with vectorized Pandas/NumPy operations, cutting data prep time by 45%.</li>
+          <li>Built and evaluated regression, classification, and ensemble models for credit risk and churn prediction — 18–22% improvement in precision and recall.</li>
+          <li>Implemented XGBoost models improving predictive accuracy by 25% and reducing false positives in default risk detection by 20%.</li>
+          <li>Established MLflow experiment tracking across 100+ runs; containerized pipelines with Docker, reducing deployment inconsistencies by 60%.</li>
+          <li>Built FastAPI inference services for real-time financial predictions; leveraged AWS SageMaker for scalable managed training and deployment.</li>
+          <li>Applied hypothesis testing to validate outcomes, driving a 12–15% improvement in conversion rates and strengthening stakeholder confidence.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <p class="exp-period">May 2020 – Aug 2023</p>
+        <p class="exp-co">Capgemini</p>
+        <p class="exp-loc">India</p>
+      </div>
+      <div>
+        <h3 class="exp-role">Data Scientist</h3>
+        <p class="exp-domain">// healthcare NLP &amp; MLOps</p>
+        <ul class="exp-bullets">
+          <li>Applied advanced NLP on large EHR corpora — text preprocessing, embeddings, semantic similarity search — achieving 28% improvement in clinical information extraction.</li>
+          <li>Built deep learning models in TensorFlow for high-dimensional pattern recognition, improving accuracy by 25%+ through architectural optimization.</li>
+          <li>Applied time series modeling to forecast key business metrics, improving forecast reliability by 20–30% across multiple scenarios.</li>
+          <li>Built automated CI/CD pipelines for continuous training and deployment of healthcare ML/LLM models, reducing release cycles by 45%.</li>
+          <li>Deployed models as RESTful APIs with FastAPI; managed experiment lifecycle and model versioning in MLflow.</li>
+          <li>Executed scalable cloud workflows on AWS (S3, SageMaker), reducing training and deployment time by 35–45%.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header reveal">
+    <span class="section-num">04 /</span>
+    <h2 class="section-title">Skills</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-cat reveal">
+      <p class="skill-cat-label">Languages</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">R</span><span class="skill-tag">C++</span><span class="skill-tag">SAS</span>
+      </div>
+    </div>
+    <div class="skill-cat reveal">
+      <p class="skill-cat-label">ML / Deep Learning</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Scikit-learn</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">PyTorch</span><span class="skill-tag">XGBoost</span><span class="skill-tag">LightGBM</span><span class="skill-tag">OpenCV</span>
+      </div>
+    </div>
+    <div class="skill-cat reveal">
+      <p class="skill-cat-label">NLP &amp; LLMs</p>
+      <div class="skill-tags">
+        <span class="skill-tag">LangChain</span><span class="skill-tag">OpenAI API</span><span class="skill-tag">RAG Pipelines</span><span class="skill-tag">NLP</span><span class="skill-tag">Prompt Engineering</span>
+      </div>
+    </div>
+    <div class="skill-cat reveal">
+      <p class="skill-cat-label">Cloud &amp; Data</p>
+      <div class="skill-tags">
+        <span class="skill-tag">AWS SageMaker</span><span class="skill-tag">AWS S3</span><span class="skill-tag">Azure ML</span><span class="skill-tag">Snowflake</span><span class="skill-tag">BigQuery</span><span class="skill-tag">Redshift</span>
+      </div>
+    </div>
+    <div class="skill-cat reveal">
+      <p class="skill-cat-label">MLOps &amp; Deployment</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Docker</span><span class="skill-tag">FastAPI</span><span class="skill-tag">MLflow</span><span class="skill-tag">CI/CD</span><span class="skill-tag">REST APIs</span><span class="skill-tag">Flask</span>
+      </div>
+    </div>
+    <div class="skill-cat reveal">
+      <p class="skill-cat-label">Analytics &amp; Viz</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Tableau</span><span class="skill-tag">Power BI</span><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Matplotlib</span><span class="skill-tag">Plotly</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="edu-block reveal">
+    <div>
+      <p class="exp-period">Houston, TX · USA</p>
+      <p class="exp-co">University of Houston</p>
+    </div>
+    <div>
+      <h3 class="edu-degree">M.S. in Engineering<br>Data Science</h3>
+      <p class="edu-school">University of Houston · Houston, TX</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-left">© 2025 · Sai Praneeth Achanta · Texas, USA</div>
+  <div class="footer-right">Turning data into decisions.</div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 65);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
